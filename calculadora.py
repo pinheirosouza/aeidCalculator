@@ -59,7 +59,7 @@ class Calculadora():
                 somaproximo = 0
                 print("Chegou here")
             elif (lista_a[cont_a] + lista_b[cont_b] + somaproximo) >= 10:
-                if key == cont_a:
+                if 0 == cont_a:
                     print("Chegou aqui")
                     resultado.insert(0, (lista_a[cont_a] + lista_b[cont_b] + somaproximo)%10)
                     resultado.insert(0, 1)
