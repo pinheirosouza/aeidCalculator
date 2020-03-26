@@ -1,6 +1,9 @@
+import time
 class Calculadora():
 
     def soma(self, a, b):
+        star = time.time()
+
         cont_a = a
         cont_b = b
         somaproximo = 0
@@ -39,38 +42,27 @@ class Calculadora():
                 lista_b.append(6) 
                 cont_b-=1
         
-        print("Lista a:", lista_a)
-        print("Lista b:", lista_b)
-
         cont_a = len(lista_a) -1
         cont_b = len(lista_b) -1
-
-        print(cont_a)
-        print(cont_b)
-        
+       
         # fazendo operações
          
         for key, value in enumerate(lista_a):
-            print(key)
-            print("cont=a", cont_a)
-            print("cont=b", cont_a)
             if (lista_a[cont_a] + lista_b[cont_b] + somaproximo) < 10:
                 resultado.insert(0, (lista_a[cont_a] + lista_b[cont_b] + somaproximo))
                 somaproximo = 0
-                print("Chegou here")
             elif (lista_a[cont_a] + lista_b[cont_b] + somaproximo) >= 10:
                 if 0 == cont_a:
-                    print("Chegou aqui")
                     resultado.insert(0, (lista_a[cont_a] + lista_b[cont_b] + somaproximo)%10)
                     resultado.insert(0, 1)
                 else:
-                    print("Chegou aqui em baixo")
                     resultado.insert(0, (lista_a[cont_a] + lista_b[cont_b] + somaproximo)%10)
                     somaproximo = 1
             cont_a-=1
             cont_b-=1
             
-        return resultado
+        end = time.time()
+        return resultado,end-star
 
     def multiplica(self, a, b):
         pass
@@ -82,7 +74,7 @@ while True:
     if select == 1:
         a = int(input("Digite o número de algarismos que serão atribuídos a variável a:\n"))
         b = int(input("Digite o número de algarismos que serão atribuídos a variável b:\n"))
-        print(calc.soma(a, b))
+        print("O resultado eh %a\nRealizado em %10.35f segundos"%calc.soma(a, b))
     if select == 2:
         a = input("Digite o número de algarismos que serão atribuídos a variável a:\n")
         b = input("Digite o número de algarismos que serão atribuídos a variável b:\n")
