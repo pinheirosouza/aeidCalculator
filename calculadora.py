@@ -1,6 +1,8 @@
+import time
 class Calculadora():
 
     def soma(self, a, b):
+        start = time.time()
         cont_a = a
         cont_b = b
         somaproximo = 0
@@ -69,8 +71,8 @@ class Calculadora():
                     somaproximo = 1
             cont_a-=1
             cont_b-=1
-            
-        return resultado
+        end = time.time()
+        return resultado,end-start
 
     def multiplica(self, a, b):
         pass
