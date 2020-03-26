@@ -3,7 +3,6 @@ class Calculadora():
 
     def soma(self, a, b):
         star = time.time()
-
         cont_a = a
         cont_b = b
         somaproximo = 0
@@ -62,21 +61,62 @@ class Calculadora():
             cont_b-=1
             
         end = time.time()
-        return resultado,end-star
+        return resultado,end-star        
 
-    def multiplica(self, a, b):
-        pass
+    def put_zeros(self,lista_a,lista_b):
+        cont_a = len(lista_a)
+        cont_b = len(lista_b)
+
+        if cont_a == cont_b:
+            pass
+
+        elif cont_a < cont_b:
+            for n in range(cont_b - cont_a):
+                lista_a.insert(0, 0) 
+       
+        elif cont_a > cont_b:
+            for n in range(cont_a - cont_b):
+                lista_b.insert(0, 0) 
+        
+        return lista_a,lista_b
+    
+    def make_array(self,a,b):
+        cont_a = a
+        cont_b = b
+        lista_a = []
+        lista_b = []
+        resultado = []
+        
+        for num in str(a):
+            lista_a.append(int(num))
+
+        for num in str(b):
+            lista_b.append(int(num))
+        
+        return lista_a,lista_b
+        
 
 while True:
     calc = Calculadora()
     print("Bem vindo:\n 1 - Soma\n 2 - Multiplicação")
     select = int(input("Selecione uma operação:"))
     if select == 1:
+        print("__________SOMA__________")
         a = int(input("Digite o número de algarismos que serão atribuídos a variável a:\n"))
         b = int(input("Digite o número de algarismos que serão atribuídos a variável b:\n"))
         print("O resultado eh %a\nRealizado em %10.35f segundos"%calc.soma(a, b))
     if select == 2:
-        a = input("Digite o número de algarismos que serão atribuídos a variável a:\n")
-        b = input("Digite o número de algarismos que serão atribuídos a variável b:\n")
-        print(calc.multiplica(a, b))
+        print("__________MULTIPLICAÇÃO__________")
+        a = int(input("Digite o número de algarismos que serão atribuídos a variável a:\n"))
+        b = int(input("Digite o número de algarismos que serão atribuídos a variável b:\n"))
+        print("result:%a"%calc.multiplica(a,b))
+
+    if select == 3:
+        print("test")
+        a = int(input("A"))
+        b = int(input("B"))
+        X,Y = calc.make_array(a,b)
+        print(X)
+        print(Y)
+        
 
