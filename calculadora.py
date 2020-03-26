@@ -1,7 +1,13 @@
 class Calculadora():
+   
+    def listToInt(self, list): 
+        s = [str(i) for i in list] 
+        res = int("".join(s)) 
+        return res
+
     def soma(self, a, b):
-        cont_a = a
-        cont_b = b
+        cont_a = 0
+        cont_b = 0
         somaproximo = 0
         lista_a = []
         lista_b = []
@@ -33,8 +39,9 @@ class Calculadora():
             for n in range(cont_a - cont_b):
                 lista_b.insert(0, 0) 
         
-        cont_a = len(lista_a) -1
-        cont_b = len(lista_b) -1
+        cont_a = len(lista_a) - 1
+        cont_b = len(lista_b) - 1
+        tam = len(lista_a) - 1 
 
         print("Lista a:", lista_a)
         print("Lista b:", lista_b)
@@ -42,7 +49,7 @@ class Calculadora():
         # fazendo operações
          
         for key, value in enumerate(lista_a):
-            print(key)
+            print("key: ",key)
             print("cont_a", cont_a)
             print("cont_b", cont_a)
             if (lista_a[cont_a] + lista_b[cont_b] + somaproximo) < 10:
@@ -50,7 +57,7 @@ class Calculadora():
                 somaproximo = 0
                 print("Chegou here")
             elif (lista_a[cont_a] + lista_b[cont_b] + somaproximo) >= 10:
-                if key == cont_a and key == 0:
+                if key == tam:
                     print("Chegou aqui")
                     resultado.insert(0, (lista_a[cont_a] + lista_b[cont_b] + somaproximo)%10)
                     resultado.insert(0, 1)
@@ -60,9 +67,11 @@ class Calculadora():
                     somaproximo = 1
             cont_a-=1
             cont_b-=1
-            
-        return resultado
 
+            intResultado = self.listToInt(resultado)
+            
+        return intResultado
+    
     def multiplica(self, a, b):
         pass
 
@@ -73,7 +82,7 @@ while(True):
     if select == 1:
         a = int(input("Digite o número  que será atribuído a variável a:\n"))
         b = int(input("Digite o número  que será atribuído a variável b:\n"))
-        print(calc.soma(a, b))
+        print("resultado: ", calc.soma(a, b))
     if select == 2:
         a = input("Digite o número  que será atribuído a variável a:\n")
         b = input("Digite o número  que será atribuído a variável b:\n")
