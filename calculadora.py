@@ -52,14 +52,14 @@ class Calculadora():
          
         for key, value in enumerate(lista_a):
             print(key)
-            print("cont=a", cont_a)
-            print("cont=b", cont_a)
+            print("cont_a", cont_a)
+            print("cont_b", cont_a)
             if (lista_a[cont_a] + lista_b[cont_b] + somaproximo) < 10:
                 resultado.insert(0, (lista_a[cont_a] + lista_b[cont_b] + somaproximo))
                 somaproximo = 0
                 print("Chegou here")
             elif (lista_a[cont_a] + lista_b[cont_b] + somaproximo) >= 10:
-                if key == cont_a:
+                if key == cont_a and key == 0:
                     print("Chegou aqui")
                     resultado.insert(0, (lista_a[cont_a] + lista_b[cont_b] + somaproximo)%10)
                     resultado.insert(0, 1)
@@ -75,7 +75,7 @@ class Calculadora():
     def multiplica(self, a, b):
         pass
 
-while True:
+while(True):
     calc = Calculadora()
     print("Bem vindo:\n 1 - Soma\n 2 - Multiplicação")
     select = int(input("Selecione uma operação:"))
