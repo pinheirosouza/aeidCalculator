@@ -1,5 +1,4 @@
 class Calculadora():
-
     def soma(self, a, b):
         cont_a = a
         cont_b = b
@@ -8,45 +7,37 @@ class Calculadora():
         lista_b = []
         resultado = []
 
-        # tratando a entrada
+        for num in str(a):
+            lista_a.append(int(num))
 
-        if cont_a == cont_b:
-            while cont_a != 0:
-                lista_a.append(5) 
-                cont_a-=1
-            while cont_b != 0:
-                lista_b.append(6)
-                cont_b-=1
-        
-        elif cont_a < cont_b:
-            while cont_a != 0:
-                lista_a.append(5) 
-                cont_a-=1
-            while cont_b != 0:
-                lista_b.append(6) 
-                cont_b-=1
-            for n in range(b-a):
-                lista_a.insert(0, 0)
-        
-        elif cont_a > cont_b:
-            while cont_a != 0:
-                lista_a.append(5) 
-                cont_a-=1
-            for n in range(a-b):
-                lista_b.insert(0, 0)
-            
-            while cont_b != 0:
-                lista_b.append(6) 
-                cont_b-=1
-        
-        print("Lista a:", lista_a)
-        print("Lista b:", lista_b)
+        for num in str(b):
+            lista_b.append(int(num))
 
-        cont_a = len(lista_a) -1
-        cont_b = len(lista_b) -1
+        print(lista_a)
+        print(lista_b)
+
+        cont_a = len(lista_a)
+        cont_b = len(lista_b)
 
         print(cont_a)
         print(cont_b)
+
+        if cont_a == cont_b:
+            pass
+
+        elif cont_a < cont_b:
+            for n in range(cont_b - cont_a):
+                lista_a.insert(0, 0) 
+       
+        elif cont_a > cont_b:
+            for n in range(cont_a - cont_b):
+                lista_b.insert(0, 0) 
+        
+        cont_a = len(lista_a) -1
+        cont_b = len(lista_b) -1
+
+        print("Lista a:", lista_a)
+        print("Lista b:", lista_b)
         
         # fazendo operações
          
@@ -80,11 +71,11 @@ while(True):
     print("Bem vindo:\n 1 - Soma\n 2 - Multiplicação")
     select = int(input("Selecione uma operação:"))
     if select == 1:
-        a = int(input("Digite o número de algarismos que serão atribuídos a variável a:\n"))
-        b = int(input("Digite o número de algarismos que serão atribuídos a variável b:\n"))
+        a = int(input("Digite o número  que será atribuído a variável a:\n"))
+        b = int(input("Digite o número  que será atribuído a variável b:\n"))
         print(calc.soma(a, b))
     if select == 2:
-        a = input("Digite o número de algarismos que serão atribuídos a variável a:\n")
-        b = input("Digite o número de algarismos que serão atribuídos a variável b:\n")
+        a = input("Digite o número  que será atribuído a variável a:\n")
+        b = input("Digite o número  que será atribuído a variável b:\n")
         print(calc.multiplica(a, b))
 
