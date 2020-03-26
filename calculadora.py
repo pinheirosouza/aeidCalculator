@@ -1,3 +1,5 @@
+import time
+
 class Calculadora():
    
     def listToInt(self, list): 
@@ -6,6 +8,7 @@ class Calculadora():
         return res
 
     def soma(self, a, b):
+        start = time.time()
         cont_a = 0
         cont_b = 0
         somaproximo = 0
@@ -13,20 +16,22 @@ class Calculadora():
         lista_b = []
         resultado = []
 
+        intResultado = 0
+
         for num in str(a):
             lista_a.append(int(num))
 
         for num in str(b):
             lista_b.append(int(num))
 
-        print(lista_a)
-        print(lista_b)
+        # print(lista_a)
+        # print(lista_b)
 
         cont_a = len(lista_a)
         cont_b = len(lista_b)
 
-        print(cont_a)
-        print(cont_b)
+        # print(cont_a)
+        # print(cont_b)
 
         if cont_a == cont_b:
             pass
@@ -41,36 +46,38 @@ class Calculadora():
         
         cont_a = len(lista_a) - 1
         cont_b = len(lista_b) - 1
-        tam = len(lista_a) - 1 
+        tam = len(lista_a) - 1
 
-        print("Lista a:", lista_a)
-        print("Lista b:", lista_b)
+        # print("Lista a:", lista_a)
+        # print("Lista b:", lista_b)
         
         # fazendo operações
          
         for key, value in enumerate(lista_a):
-            print("key: ",key)
-            print("cont_a", cont_a)
-            print("cont_b", cont_a)
+            # print("key: ",key)
+            # print("cont_a", cont_a)
+            # print("cont_b", cont_a)
             if (lista_a[cont_a] + lista_b[cont_b] + somaproximo) < 10:
                 resultado.insert(0, (lista_a[cont_a] + lista_b[cont_b] + somaproximo))
                 somaproximo = 0
-                print("Chegou here")
+                # print("Chegou here")
             elif (lista_a[cont_a] + lista_b[cont_b] + somaproximo) >= 10:
                 if key == tam:
-                    print("Chegou aqui")
+                    # print("Chegou aqui")
                     resultado.insert(0, (lista_a[cont_a] + lista_b[cont_b] + somaproximo)%10)
                     resultado.insert(0, 1)
                 else:
-                    print("Chegou aqui em baixo")
+                    # print("Chegou aqui em baixo")
                     resultado.insert(0, (lista_a[cont_a] + lista_b[cont_b] + somaproximo)%10)
                     somaproximo = 1
             cont_a-=1
             cont_b-=1
 
             intResultado = self.listToInt(resultado)
-            
-        return intResultado
+
+        end = time.time()
+        print("Tempo gasto: ", end-start)
+        return intResultado 
     
     def multiplica(self, a, b):
         pass
