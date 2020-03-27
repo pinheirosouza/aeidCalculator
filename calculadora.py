@@ -1,68 +1,82 @@
 import time
 class Calculadora():
 
+    def listToInt(self, list): 
+        s = [str(i) for i in list] 
+        res = int("".join(s)) 
+        return res
+
     def soma(self, a, b):
-        star = time.time()
-        cont_a = a
-        cont_b = b
+        start = time.time()
+        cont_a = 0
+        cont_b = 0
         somaproximo = 0
         lista_a = []
         lista_b = []
         resultado = []
 
-        # tratando a entrada
+        intResultado = 0
+
+        for num in str(a):
+            lista_a.append(int(num))
+
+        for num in str(b):
+            lista_b.append(int(num))
+
+        # print(lista_a)
+        # print(lista_b)
+
+        cont_a = len(lista_a)
+        cont_b = len(lista_b)
+
+        # print(cont_a)
+        # print(cont_b)
 
         if cont_a == cont_b:
-            while cont_a != 0:
-                lista_a.append(5) 
-                cont_a-=1
-            while cont_b != 0:
-                lista_b.append(6)
-                cont_b-=1
-        
+            pass
+
         elif cont_a < cont_b:
-            while cont_a != 0:
-                lista_a.append(5) 
-                cont_a-=1
-            while cont_b != 0:
-                lista_b.append(6) 
-                cont_b-=1
-            for n in range(b-a):
-                lista_a.insert(0, 0)
-        
-        elif cont_a > cont_b:
-            while cont_a != 0:
-                lista_a.append(5) 
-                cont_a-=1
-            for n in range(a-b):
-                lista_b.insert(0, 0)
-            
-            while cont_b != 0:
-                lista_b.append(6) 
-                cont_b-=1
-        
-        cont_a = len(lista_a) -1
-        cont_b = len(lista_b) -1
+            for n in range(cont_b - cont_a):
+                lista_a.insert(0, 0) 
        
+        elif cont_a > cont_b:
+            for n in range(cont_a - cont_b):
+                lista_b.insert(0, 0) 
+        
+        cont_a = len(lista_a) - 1
+        cont_b = len(lista_b) - 1
+        tam = len(lista_a) - 1
+
+        # print("Lista a:", lista_a)
+        # print("Lista b:", lista_b)
+        
         # fazendo operações
          
         for key, value in enumerate(lista_a):
+            # print("key: ",key)
+            # print("cont_a", cont_a)
+            # print("cont_b", cont_a)
             if (lista_a[cont_a] + lista_b[cont_b] + somaproximo) < 10:
                 resultado.insert(0, (lista_a[cont_a] + lista_b[cont_b] + somaproximo))
                 somaproximo = 0
+                # print("Chegou here")
             elif (lista_a[cont_a] + lista_b[cont_b] + somaproximo) >= 10:
-                if 0 == cont_a:
+                if key == tam:
+                    # print("Chegou aqui")
                     resultado.insert(0, (lista_a[cont_a] + lista_b[cont_b] + somaproximo)%10)
                     resultado.insert(0, 1)
                 else:
+                    # print("Chegou aqui em baixo")
                     resultado.insert(0, (lista_a[cont_a] + lista_b[cont_b] + somaproximo)%10)
                     somaproximo = 1
             cont_a-=1
             cont_b-=1
-            
-        end = time.time()
-        return resultado,end-star        
 
+            intResultado = self.listToInt(resultado)
+
+        end = time.time()
+        return intResultado, end-start
+    
     def put_zeros(self,lista_a,lista_b):
         cont_a = len(lista_a)
         cont_b = len(lista_b)
@@ -95,41 +109,43 @@ class Calculadora():
         return lista_a,lista_b
 
     def multiplica(self,a,b):
-        somaproximo = 0
-        cont_b = b
-        lista_a,desc = calc.make_array(a,b)
-        cont_a = len(lista_a) - 1
-        lista_b = lista_a
-        resultado = []
+        start = time.time()
+        cont_vezes = b
+        lista_a = []
+        lista_fixa,desc = self.make_array(a,b)
+        
 
-        while cont_b > 1:
-            print("Voltou??????????????????????")
+        # fazendo operações
+        while cont_vezes != 0: 
+            #print("voltou")
+            lista_a,lista_fixa = self.put_zeros(lista_a,lista_fixa)
+            somaproximo = 0
+            cont_a = 0
+            cont_fixa = 0
             cont_a = len(lista_a) - 1
+            cont_fixa = len(lista_fixa) - 1
+            tam = len(lista_a) - 1
+            resultado = []
             for key, value in enumerate(lista_a):
-                print(key)
-                print(resultado)
-                if (lista_a[cont_a] + lista_b[cont_a] + somaproximo) < 10:
-                    resultado.insert(0, (lista_a[cont_a] + lista_b[cont_a] + somaproximo))
+                if (lista_a[cont_a] + lista_fixa[cont_fixa] + somaproximo) < 10:
+                    resultado.insert(0, (lista_a[cont_a] + lista_fixa[cont_fixa] + somaproximo))
                     somaproximo = 0
-                    print("Chegou 1")
-                    print(resultado)
-                    print("______")
-                elif (lista_a[cont_a] + lista_b[cont_a] + somaproximo) >= 10:
-                    if 0 == cont_a:
-                        resultado.insert(0, (lista_a[cont_a] + lista_b[cont_a] + somaproximo)%10)
+                    #print("Chegou here")
+                elif (lista_a[cont_a] + lista_fixa[cont_fixa] + somaproximo) >= 10:
+                    if key == tam:
+                        #print("Chegou aqui")
+                        resultado.insert(0, (lista_a[cont_a] + lista_fixa[cont_fixa] + somaproximo)%10)
                         resultado.insert(0, 1)
-                        print("Chegou 2")
                     else:
-                        resultado.insert(0, (lista_a[cont_a] + lista_b[cont_a] + somaproximo)%10)
+                        #print("Chegou aqui em baixo")
+                        resultado.insert(0, (lista_a[cont_a] + lista_fixa[cont_fixa] + somaproximo)%10)
                         somaproximo = 1
-                        print("chegou 3")
-                        print(resultado)
-                        print("______")
                 cont_a-=1
-            
-                
-            cont_b = cont_b - 1
-        return resultado
+                cont_fixa-=1
+            lista_a = resultado
+            cont_vezes-=1
+        end = time.time()
+        return resultado,end-start
 
 
 
@@ -146,17 +162,7 @@ while True:
         print("__________MULTIPLICAÇÃO__________")
         a = int(input("Digite o número de algarismos que serão atribuídos a variável a:\n"))
         b = int(input("Digite o número de algarismos que serão atribuídos a variável b:\n"))
-        print("resultado eh: %a"%calc.multiplica(a,b))
+        print("resultado eh: %a\nRealizado em %10.35f"%calc.multiplica(a,b))
 
-    if select == 3:
-        print("test")
-        a = int(input("A"))
-        b = int(input("B"))
-        X,Y = calc.make_array(a,b)
-        print(X)
-        print(Y)
-        lista1,lista2 = calc.put_zeros(X,Y)
-        print(lista1)
-        print(lista2)
         
 
