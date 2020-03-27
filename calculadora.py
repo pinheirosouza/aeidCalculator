@@ -85,7 +85,6 @@ class Calculadora():
         cont_b = b
         lista_a = []
         lista_b = []
-        resultado = []
         
         for num in str(a):
             lista_a.append(int(num))
@@ -94,7 +93,45 @@ class Calculadora():
             lista_b.append(int(num))
         
         return lista_a,lista_b
-        
+
+    def multiplica(self,a,b):
+        somaproximo = 0
+        cont_b = b
+        lista_a,desc = calc.make_array(a,b)
+        cont_a = len(lista_a) - 1
+        lista_b = lista_a
+        resultado = []
+
+        while cont_b > 1:
+            print("Voltou??????????????????????")
+            cont_a = len(lista_a) - 1
+            for key, value in enumerate(lista_a):
+                print(key)
+                print(resultado)
+                if (lista_a[cont_a] + lista_b[cont_a] + somaproximo) < 10:
+                    resultado.insert(0, (lista_a[cont_a] + lista_b[cont_a] + somaproximo))
+                    somaproximo = 0
+                    print("Chegou 1")
+                    print(resultado)
+                    print("______")
+                elif (lista_a[cont_a] + lista_b[cont_a] + somaproximo) >= 10:
+                    if 0 == cont_a:
+                        resultado.insert(0, (lista_a[cont_a] + lista_b[cont_a] + somaproximo)%10)
+                        resultado.insert(0, 1)
+                        print("Chegou 2")
+                    else:
+                        resultado.insert(0, (lista_a[cont_a] + lista_b[cont_a] + somaproximo)%10)
+                        somaproximo = 1
+                        print("chegou 3")
+                        print(resultado)
+                        print("______")
+                cont_a-=1
+            
+                
+            cont_b = cont_b - 1
+        return resultado
+
+
 
 while True:
     calc = Calculadora()
@@ -109,7 +146,7 @@ while True:
         print("__________MULTIPLICAÇÃO__________")
         a = int(input("Digite o número de algarismos que serão atribuídos a variável a:\n"))
         b = int(input("Digite o número de algarismos que serão atribuídos a variável b:\n"))
-        print("result:%a"%calc.multiplica(a,b))
+        print("resultado eh: %a"%calc.multiplica(a,b))
 
     if select == 3:
         print("test")
@@ -118,5 +155,8 @@ while True:
         X,Y = calc.make_array(a,b)
         print(X)
         print(Y)
+        lista1,lista2 = calc.put_zeros(X,Y)
+        print(lista1)
+        print(lista2)
         
 
