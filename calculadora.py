@@ -73,11 +73,11 @@ class Calculadora():
             cont_a-=1
             cont_b-=1
 
-            intResultado = self.listToInt(resultado)
+            # intResultado = self.listToInt(resultado)
 
         end = time.time()
         print("Tempo gasto: ", end-start)
-        return intResultado 
+        return resultado 
     
     def multiplica(self, a, b):
         pass
