@@ -1,6 +1,4 @@
 import time
-import matplotlib.pyplot
-
 class Calculadora():
 
     def listToInt(self, list): 
@@ -30,7 +28,6 @@ class Calculadora():
 
         cont_a = len(lista_a)
         cont_b = len(lista_b)
-        numLen = cont_b + cont_a
 
         # print(cont_a)
         # print(cont_b)
@@ -75,11 +72,10 @@ class Calculadora():
             cont_a-=1
             cont_b-=1
 
-            intResultado = self.listToInt(resultado)
-
+        
+        intResultado = self.listToInt(resultado)
         end = time.time()
-        finalList = [intResultado, end-start]
-        return finalList
+        return intResultado, end-start
     
     def put_zeros(self,lista_a,lista_b):
         cont_a = len(lista_a)
@@ -148,25 +144,22 @@ class Calculadora():
                 cont_fixa-=1
             lista_a = resultado
             cont_vezes-=1
-            intResultado = self.listToInt(resultado)
         end = time.time()
-        return intResultado,end-start
+        return resultado,end-start
+
+
 
 while True:
     calc = Calculadora()
     print("Bem vindo:\n 1 - Soma\n 2 - Multiplicação")
     select = int(input("Selecione uma operação:"))
     if select == 1:
-        print("__________SOMA__________")
+        print("___SOMA___")
         a = int(input("Digite o número de algarismos que serão atribuídos a variável a:\n"))
         b = int(input("Digite o número de algarismos que serão atribuídos a variável b:\n"))
-        soma = calc.soma(a,b)
-        print("O resultado é:\n", soma[0],"\n Este resultado foi gerado em:", soma[1], "segundos")
+        print("O resultado eh %a\nRealizado em %10.35f segundos"%calc.soma(a, b))
     if select == 2:
-        print("__________MULTIPLICAÇÃO__________")
+        print("___MULTIPLICAÇÃO___")
         a = int(input("Digite o número de algarismos que serão atribuídos a variável a:\n"))
         b = int(input("Digite o número de algarismos que serão atribuídos a variável b:\n"))
         print("resultado eh: %a\nRealizado em %10.35f"%calc.multiplica(a,b))
-
-        
-
