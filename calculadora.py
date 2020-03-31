@@ -1,4 +1,6 @@
 import time
+import matplotlib.pyplot
+
 class Calculadora():
 
     def listToInt(self, list): 
@@ -28,6 +30,7 @@ class Calculadora():
 
         cont_a = len(lista_a)
         cont_b = len(lista_b)
+        numLen = cont_b + cont_a
 
         # print(cont_a)
         # print(cont_b)
@@ -75,7 +78,8 @@ class Calculadora():
             intResultado = self.listToInt(resultado)
 
         end = time.time()
-        return intResultado, end-start
+        finalList = [intResultado, end-start]
+        return finalList
     
     def put_zeros(self,lista_a,lista_b):
         cont_a = len(lista_a)
@@ -144,11 +148,13 @@ class Calculadora():
                 cont_fixa-=1
             lista_a = resultado
             cont_vezes-=1
+            intResultado = self.listToInt(resultado)
         end = time.time()
-        return resultado,end-start
+        return intResultado,end-start
 
 
-
+listLens = []
+listTimes = []
 while True:
     calc = Calculadora()
     print("Bem vindo:\n 1 - Soma\n 2 - Multiplicação")
@@ -157,7 +163,10 @@ while True:
         print("__________SOMA__________")
         a = int(input("Digite o número de algarismos que serão atribuídos a variável a:\n"))
         b = int(input("Digite o número de algarismos que serão atribuídos a variável b:\n"))
-        print("O resultado eh %a\nRealizado em %10.35f segundos"%calc.soma(a, b))
+        soma = calc.soma(a,b)
+        listLens.append(soma[1])
+        listTimes.append(soma[0])
+        print("O resultado é:\n", soma[0],"\n Este resultado foi gerado em:", soma[1], "segundos")
     if select == 2:
         print("__________MULTIPLICAÇÃO__________")
         a = int(input("Digite o número de algarismos que serão atribuídos a variável a:\n"))
