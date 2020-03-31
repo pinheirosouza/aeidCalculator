@@ -152,9 +152,6 @@ class Calculadora():
         end = time.time()
         return intResultado,end-start
 
-
-listLens = []
-listTimes = []
 while True:
     calc = Calculadora()
     print("Bem vindo:\n 1 - Soma\n 2 - Multiplicação")
@@ -164,8 +161,6 @@ while True:
         a = int(input("Digite o número de algarismos que serão atribuídos a variável a:\n"))
         b = int(input("Digite o número de algarismos que serão atribuídos a variável b:\n"))
         soma = calc.soma(a,b)
-        listLens.append(soma[1])
-        listTimes.append(soma[0])
         print("O resultado é:\n", soma[0],"\n Este resultado foi gerado em:", soma[1], "segundos")
     if select == 2:
         print("__________MULTIPLICAÇÃO__________")
