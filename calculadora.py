@@ -144,8 +144,9 @@ class Calculadora():
                 cont_fixa-=1
             lista_a = resultado
             cont_vezes-=1
+            intResultado = self.listToInt(resultado)
         end = time.time()
-        return resultado,end-start
+        return intResultado,end-start
 
 
 
@@ -155,11 +156,11 @@ while True:
     select = int(input("Selecione uma operação:"))
     if select == 1:
         print("___SOMA___")
-        a = int(input("Digite o número de algarismos que serão atribuídos a variável a:\n"))
-        b = int(input("Digite o número de algarismos que serão atribuídos a variável b:\n"))
-        print("O resultado eh %a\nRealizado em %10.35f segundos"%calc.soma(a, b))
+        a = int(input("Digite o primeiro número para realizar a soma:\n"))
+        b = int(input("Digite o segundo número:\n"))
+        print("\n\nResultado: %a\nRealizado em %10.35f\n\n"%calc.soma(a, b))
     if select == 2:
         print("___MULTIPLICAÇÃO___")
-        a = int(input("Digite o número de algarismos que serão atribuídos a variável a:\n"))
-        b = int(input("Digite o número de algarismos que serão atribuídos a variável b:\n"))
-        print("resultado eh: %a\nRealizado em %10.35f"%calc.multiplica(a,b))
+        a = int(input("Digite o primeiro número para realizar a multiplicação:\n"))
+        b = int(input("Digite o segundo número:\n"))
+        print("\n\nResultado: %a\nRealizado em %10.35f\n\n"%calc.multiplica(a,b))
