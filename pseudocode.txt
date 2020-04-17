@@ -1,0 +1,93 @@
+inicio
+
+enquanto Verdadeiro:
+    var calc <- Objeto(Calculadora)
+    imprime("Bem vindo:\n 1 - Soma\n 2 - Multiplicação")
+    imprime("Selecione uma operação:")
+    var select
+    leia(select)
+
+    se select igual 1:
+        imprime("___SOMA___")
+
+        imprime("Digite o primeiro número para realizar a soma:\n")
+        var a
+        leia(a)
+
+        imprime("Digite o segundo número:\n")
+        var b
+        leia(b)
+
+        calc : método soma(a,b){
+            var start <- tempo nesse momento
+
+            var cont_a, cont_b, somaproximo, lista_a, lista_b, tam, resultado, intResultado
+
+            para cada numero em a como String:
+                lista_a[último] <- numero como Inteiro
+            
+            para cada numero em b como String:
+                lista_a[último] <- numero como Inteiro
+            
+            cont_a <- tamanho lista_a
+            cont_b <- tamanho lista_b
+
+            se cont_a igual cont_b:
+                passa
+            
+            se cont_a menor que cont_b:
+                para cada n em variação(cont_b - cont_a):
+                    lista_a[início] <- 0 
+            
+            se cont_a maior que cont_b:
+                para cada n em variação(cont_a - cont_b):
+                    lista_b[início] <- 0
+            
+            cont_a = tamanho da lista_a - 1
+            cont_b = tamanho da lista_b - 1
+            tam = tamanho da lista_a - 1
+
+            para cada chave e valor em lista_a transformada em Dict com chaves igual index:
+                se lista_a[cont_a] + lista_b[cont_b] + somaproximo menor que 10:
+                    lista_a[início] <- lista_a[cont_a] + lista_b[cont_b] + somaproximo
+                    somaproximo <- 0
+
+                caso lista_a[cont_a] + lista_b[cont_b] + somaproximo igual ou maior que 10:
+                    se chave igual tam:
+                        lista_a[início] <- módulo da divisão ((lista_a[cont_a] + lista_b[cont_b] + somaproximo)/10)
+                        lista_a[início] <- 1
+                    senão:
+                        lista_a[início] <- módulo da divisão ((lista_a[cont_a] + lista_b[cont_b] + somaproximo)/10)
+                        somaproximo <- 1
+
+                cont_a <- cont_a -1
+                cont_b <- cont_b -1
+            
+            intResultado <- retorno de Calculadora():método listToInt(resultado) {
+                var s <- lista resultado transformando algarismos em String
+                var res = união dos algarismos em uma só String transformando para inteiro
+                retorna res
+            }
+            var end <- tempo nesse momento
+
+            retorna intResultado, (end-start)
+        }
+
+        imprime("Resultado:" + retorno de calc:método soma(a,b)[0] + "Realizado em " + retorno de calc:método soma(a,b)[1]
+
+    se select igual 2:
+        imprime("___MULTIPLICAÇÃO___")
+
+        imprime("Digite o primeiro número para realizar a multiplicação:\n")
+        var a
+        leia(a)
+
+        imprime("Digite o segundo número:\n")
+        var b
+        leia(b)
+
+        calc : método multiplicação(a,b){
+            
+        }
+
+        imprime("Resultado:" + retorno de calc:método multiplicação(a,b)[0] + "Realizado em " + retorno de calc:método multiplicação(a,b)[1]
